@@ -1,0 +1,139 @@
+.componentWrapper2{
+    margin: auto;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    /*justify-content: center;*/
+    height: 450px;
+}
+
+.toggleVal{
+    color: #121c2f;
+    font-size: 1.5em;
+    font-weight: bold;
+    /*margin: 0 15%;*/
+}
+
+.offLabel{
+    margin: auto 3% auto 15%;
+}
+.onLabel{
+    margin: auto 15% auto 3%;
+}
+
+.componentWrapper3{
+    align-items: center;
+    height: 450px;
+}
+
+.on{
+    color: #48e98a;
+}
+
+.off{
+    color: #fe4551;
+}
+
+#buttonWrapper input {
+    display: none;
+}
+#buttonWrapper .toggleWrapper {
+    z-index: 3;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: auto;
+    cursor: pointer;
+    transition: all 0.2s;
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    background-color: #fe4551;
+    box-shadow: 0 20px 20px 0 rgba(254, 69, 81, 0.3);
+}
+#buttonWrapper .toggleWrapper:active {
+    width: 95px;
+    height: 95px;
+    box-shadow: 0 15px 15px 0 rgba(254, 69, 81, 0.5);
+}
+#buttonWrapper .toggleWrapper:active .toggle {
+    height: 17px;
+    width: 17px;
+}
+#buttonWrapper .toggleWrapper .toggle {
+    transition: all 0.2s ease-in-out;
+    height: 40px;
+    width: 40px;
+    background-color: transparent;
+    border: 10px solid #fff;
+    border-radius: 50%;
+    cursor: pointer;
+    animation: red 0.7s linear forwards;
+}
+#buttonWrapper input:checked ~ .background {
+    background-color: #f9faf7;
+}
+#buttonWrapper input:checked + .toggleWrapper {
+    background-color: #48e98a;
+    box-shadow: 0 20px 20px 0 rgba(72, 233, 138, 0.3);
+}
+#buttonWrapper input:checked + .toggleWrapper:active {
+    box-shadow: 0 15px 15px 0 rgba(72, 233, 138, 0.5);
+}
+#buttonWrapper input:checked + .toggleWrapper .toggle {
+    width: 0;
+    background-color: #fff;
+    border-color: transparent;
+    border-radius: 30px;
+    animation: green 0.7s linear forwards !important;
+}
+
+@keyframes red {
+    0% {
+        height: 30px;
+        width: 0;
+        border-width: 5px;
+    }
+    55% {
+        height: 30px;
+        width: 35px;
+        border-width: 10px;
+    }
+    70% {
+        height: 35px;
+        width: 30px;
+        border-width: 10px;
+    }
+    85% {
+        height: 30px;
+        width: 40px;
+        border-width: 10px;
+    }
+    100% {
+        height: 35px;
+        width: 35px;
+        border-width: 10px;
+    }
+}
+@keyframes green {
+    0% {
+        height: 35px;
+        width: 30px;
+        border-width: 10px;
+    }
+    25% {
+        height: 35px;
+        width: 5px;
+        border-width: 6px;
+    }
+    55%, 85% {
+        height: 35px;
+        width: 5px;
+        border-width: 5px;
+    }
+    40%, 70%, 100% {
+        height: 35px;
+        width: 0;
+        border-width: 5px;
+    }
+}
