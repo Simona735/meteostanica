@@ -4,7 +4,7 @@
     flex-direction: row;
     align-items: center;
     /*justify-content: center;*/
-    height: 450px;
+    height: 210px;
 }
 
 .toggleVal{
@@ -32,6 +32,11 @@
 
 .off{
     color: #fe4551;
+}
+
+#outputWrapper{
+    justify-content: space-around;
+    margin: auto;
 }
 
 #buttonWrapper input {

@@ -9,10 +9,6 @@ try {
     $stmt = $db->query($query);
     $data = $stmt->fetchAll(PDO::FETCH_ASSOC);
     echo json_encode($data);
-}
-//catch (\mysql_xdevapi\Exception){
-//    echo "Some error happened";
-//}
-catch(PDOException $e) {
+}catch(PDOException $e) {
     echo "Connection failed: " . $e->getMessage();
 }

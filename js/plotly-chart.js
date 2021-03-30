@@ -2,6 +2,11 @@ let checkbox = document.querySelector("#toggle");
 let onButton = document.querySelector("#valOn");
 let offButton = document.querySelector("#valOff");
 
+let corX0 = document.querySelector("#x0-cor");
+let corY0 = document.querySelector("#y0-cor");
+let corX1 = document.querySelector("#x1-cor");
+let corY1 = document.querySelector("#y1-cor");
+
 checkbox.addEventListener('change', switchButton );
 
 var temperatureData = phpdata.map(value => value.temperature);
@@ -59,7 +64,7 @@ $(document).ready(function() {
 
 
     var layout = {
-        //title: 'Basic Time Series',
+        title: '',
         plot_bgcolor: '#1B2A47',
         paper_bgcolor: '#1B2A47',
         font: {
@@ -70,27 +75,50 @@ $(document).ready(function() {
             l: 30,
             r: 5,
             b: 34,
-            t: 10,
+            t: 25,
         },
         xaxis: {
             showline: true,
             linecolor: '#636363',
             linewidth: 0,
+            title: '',
         },
         yaxis: {
             showline: true,
             linecolor: '#636363',
             linewidth: 0,
+            title: '',
         },
+        shapes: [{
+            'type': 'line',
+            'x0': "2021-03-25 15:00:00",
+            'y0': 100,
+            'x1': "2021-03-28 14:30:00",
+            'y1': 600,
+            'line': {
+                'color': 'red',
+                'width': 3,
+            }
+            },
+            ]
     };
+    setShapeCoordinates();
 
     var config = {
         responsive: true,
-        displayModeBar: false
+        displayModeBar: false,
+        editable: true
     }
 
     var data = [trace1,trace2,trace3];
     Plotly.newPlot('chart', data, layout, config);
+
+    var myPlot = document.querySelector("#chart");
+
+    myPlot.on('plotly_relayout', function(data){
+        setShapeCoordinates();
+    });
+
 // realtime chart
     setInterval(function() {
 
@@ -105,9 +133,16 @@ $(document).ready(function() {
             x: [[timestampData[timestampData.length-1]], [timestampData[timestampData.length-1]], [timestampData[timestampData.length-1]]],
             y: [[illuminanceData[illuminanceData.length-1]], [temperatureData[temperatureData.length-1]], [humidityData[humidityData.length-1]]]
         }, [0, 1, 2]);
+
     }, 2000);
 
 
+    function setShapeCoordinates(){
+        corX0.innerHTML = customDateFormat(layout["shapes"][0]["x0"]);
+        corY0.innerHTML = layout["shapes"][0]["y0"].toFixed(2);
+        corX1.innerHTML = customDateFormat(layout["shapes"][0]["x1"]);;
+        corY1.innerHTML = layout["shapes"][0]["y1"].toFixed(2);
+    }
 
 } );
 
@@ -125,7 +160,6 @@ function switchButton(){
         buttonOn = 1;
 
     }
-    console.log(buttonOn);
 
     let dataVal = {
         element: buttonOn.toString()
@@ -141,7 +175,18 @@ function switchButton(){
         .then(data => { console.log(data); })
 }
 
+// $.post( "ajax/test.html", {insert: "1"}); $_POST["insert"]  //musi to byt string
 
+function customDateFormat(dateValue){
+    var data = new Date(dateValue);
+    var stringDate = '';
+    stringDate += data.getDate() + ".";
+    stringDate += ((data.getMonth() + 1).toString()).padStart(2, "0") + ". ";
+    stringDate += ((data.getHours()).toString()).padStart(2, "0") + ":";
+    stringDate += ((data.getMinutes()).toString()).padStart(2, "0") + ":";
+    stringDate += ((data.getSeconds()).toString()).padStart(2, "0");
+    return stringDate;
+}
 
 
 

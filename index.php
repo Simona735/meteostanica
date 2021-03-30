@@ -127,7 +127,7 @@ try {
                 </div>
                 <div class="col-lg-3 col-md-4 col-sm-12 col-xs-12">
                     <div class="white-box analytics-info-cs mg-b-30">
-                        <h3 class="box-title">Upload to DB</h3>
+                        <h3 class="box-title">Upload do databázy</h3>
                         <div id="buttonWrapper" class="componentWrapper2">
                             <p id="valOff" class="toggleVal offLabel ">OFF</p>
                             <input type="checkbox" name="checkbox" id="toggle" />
@@ -135,6 +135,29 @@ try {
                                 <div class="toggle"></div>
                             </label>
                             <p id="valOn" class="toggleVal onLabel">ON</p>
+                        </div>
+                        <h3 class="box-title">Súradnice čiary</h3>
+                        <div id="outputWrapper" class="componentWrapper2 ">
+                            <div >
+                                <div class="output-group mb-5">
+                                    <span class="output-text">x0</span>
+                                    <output  id="x0-cor" type="text" class="form-control " >
+                                </div>
+                                <div class="output-group mb-5">
+                                    <span class="output-text">y0</span>
+                                    <output  id="y0-cor" type="text" class="form-control " >
+                                </div>
+                            </div>
+                            <div>
+                                <div class="output-group pb-5">
+                                    <span class="output-text">x1</span>
+                                    <output  id="x1-cor" type="text" class="form-control " >
+                                </div>
+                                <div class="output-group mb-3">
+                                    <span class="output-text">y1</span>
+                                    <output  id="y1-cor" type="text" class="form-control " >
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>

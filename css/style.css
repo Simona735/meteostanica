@@ -34,6 +34,9 @@ h1, h2, h3, h4, h5, h6 {
   font-weight:700;
 	color: #FBFBFB;
 }
+.output-text{
+	color: whitesmoke;
+}
 
 .white-box{
 	border-radius: 6px;
@@ -849,7 +852,7 @@ ul.setting-panel-list li{
     display: block;
     padding: 6px 12px;
     transition: border-color 0.15s ease-in-out 0s, box-shadow 0.15s ease-in-out 0s;
-    width: 100%;
+    width: 10em;
 }
 .breadcome-heading a {
     position: absolute;
@@ -988,7 +991,7 @@ ul.cus-product-sl-rp li h5{
 .analysis-progrebar-ctn h4, .tranffic-als-inner h3{
 	font-size:20px;
 	color:#fff;
-	text-transform: capitalize;
+	/*text-transform: capitalize;*/
 }
 ul.two-part-sp li{
 	display:inline-block;
@@ -998,7 +1001,7 @@ ul.two-part-sp li{
 .analytics-info-cs h3{
 	font-size:20px;
 	color:#fff;
-	text-transform: capitalize;
+	/*text-transform: capitalize;*/
 }
 .stats-row {
     margin-bottom: 20px;
