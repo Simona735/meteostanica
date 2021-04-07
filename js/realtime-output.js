@@ -19,24 +19,9 @@ tempValueInputs.forEach((input) => {
         } else {
             configuration[input.id] = input.value;
             range[input.id.slice(0, 3)] = configuration[input.id]; // Update range
-            //return setTemperature(); // Update temperature
         }
     });
 });
-
-
-// // Change temperature
-//
-// const range = document.querySelector("input[type='range']");
-// const temperature = document.getElementById("temperature");
-//
-// function setTemperature() {
-//     temperature.style.height = (range.value - config.minTemp) / (config.maxTemp - config.minTemp) * 100 + "%";
-//     temperature.dataset.value = range.value + "°C";
-// }
-//
-// range.addEventListener("input", setTemperature);
-// setTimeout(setTemperature, 1000);
 
 
 //TODO SEGMENT DISPLAY
@@ -59,7 +44,6 @@ animate("   . ");
 
 function animate(value) {
     display.setValue(value);
-    //window.setTimeout('animate()', 300);
 }
 
 //TODO GAUGE
@@ -111,19 +95,6 @@ function updateHumidity(value){
 }
 function updateIlluminance(val){
 
-    // data.value = val;
-    //
-    // Plotly.newPlot('gauge', data, layout, {displayModeBar: false });
-
-    //TODO val colors
-    // data: [{
-    //     value: val,
-    //     gauge: {
-    //         bar: {
-    //             color: "#6164C1",
-    //         },
-    //     }
-    // }],
     var hex = "#6164C1";
 
     if(val > 600){
