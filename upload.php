@@ -2,39 +2,19 @@
 
 require_once "config.php";
 
-/*
 
-try {
-    $db = new PDO("mysql:host=".DB_HOST.";dbname=".DB_NAME, DB_USER, DB_PASSWORD);
-    // set the PDO error mode to exception
-    $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-
-    $insert_to_db = 0;
-
-    $query = "SELECT * FROM settings";
-    $stmt = $db->query($query);
-    $settings = $stmt->fetch(PDO::FETCH_ASSOC);
-    console_log($settings);
-    //echo "Connected successfully";
-} catch(PDOException $e) {
-    //echo "Connection failed: " . $e->getMessage();
-}
-*/
-
-
-
-// Create connection
-$conn = new mysqli(DB_HOST, DB_USER, DB_PASSWORD, DB_NAME);
+$conn = new PDO("mysql:host=".DB_HOST.";dbname=".DB_NAME, DB_USER, DB_PASSWORD);
+$conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
 $insert_to_db = 0;
 
 $sql = "SELECT * FROM settings";
-$result = $conn->query($sql);
+$stmt = $conn->query($sql);
+$result = $stmt->fetch(PDO::FETCH_ASSOC);
 
-if($result->num_rows == 1){
-    $result = $result->fetch_assoc();
+if($result != null){
     $insert_to_db = (int) $result["insert_to_db"];
-    echo "realtime".$insert_to_db."#".$result["insert_time"]."~";
+    echo "success";
 }else{
     echo "settings error: " .$sql . $conn->error;
 }
